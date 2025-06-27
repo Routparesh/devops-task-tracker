@@ -3,3 +3,4 @@ node-modules
 package-lock.json
 .env
 .env.*
+.env
