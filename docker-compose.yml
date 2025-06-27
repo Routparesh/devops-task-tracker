@@ -1,0 +1,27 @@
+services:
+  backend:
+    build: ./backend
+    image: routparesh/task-tracker-backend-app:v1
+    ports:
+      - '3000:3000'
+    env_file:
+      - .env
+    depends_on:
+      - db
+  frontend:
+    build: ./frontend
+    image: routparesh/task-tracker-frontend-app:v1
+    ports:
+      - '80:80'
+    depends_on:
+      - backend
+  db:
+    image: mongo
+    environment:
+      MONGO_URL: mongodb://localhost:27017/devops_demo
+    ports:
+      - '27017:27017'
+    volumes:
+      - 'mongo_data:/data/db/'
+volumes:
+  mongo_data:
