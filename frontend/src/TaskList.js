@@ -1,8 +1,6 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { io } from 'socket.io-client';
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || '';
 
-const socket = io('http://localhost:3000'); // Update port if needed
+const socket = io(`${BACKEND_URL}`);
 
 const TaskList = () => {
 	const [tasks, setTasks] = useState([]);
@@ -10,7 +8,7 @@ const TaskList = () => {
 
 	const fetchTasks = () => {
 		axios
-			.get('http://localhost:3000/tasks')
+			.get(`${BACKEND_URL}/tasks`)
 			.then((res) => setTasks(res.data))
 			.catch((err) => console.error(err));
 	};
@@ -41,7 +39,7 @@ const TaskList = () => {
 		if (!taskName.trim()) return;
 
 		axios
-			.post('http://localhost:3000/tasks', {
+			.post(`${BACKEND_URL}/tasks`, {
 				name: taskName,
 				status: false,
 			})
@@ -51,13 +49,13 @@ const TaskList = () => {
 
 	const markComplete = (id) => {
 		axios
-			.patch(`http://localhost:3000/tasks/${id}/complete`)
+			.patch(`${BACKEND_URL}/tasks/${id}/complete`)
 			.catch((err) => console.error('Error marking complete:', err));
 	};
 
 	const deleteTask = (id) => {
 		axios
-			.delete(`http://localhost:3000/tasks/${id}`)
+			.delete(`${BACKEND_URL}/tasks/${id}`)
 			.catch((err) => console.error('Error deleting task:', err));
 	};
 

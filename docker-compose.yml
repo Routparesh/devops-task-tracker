@@ -17,8 +17,6 @@ services:
       - backend
   db:
     image: mongo
-    environment:
-      MONGO_URL: mongodb://localhost:27017/devops_demo
     ports:
       - '27017:27017'
     volumes:
