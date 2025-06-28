@@ -7,15 +7,18 @@ services:
     env_file:
       - .env
     depends_on:
-      - db
+      - mongo-service
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      args:
+        - REACT_APP_BACKEND_URL=http://api.paresh.work
     image: routparesh/task-tracker-frontend-app:v1
     ports:
       - '80:80'
     depends_on:
       - backend
-  db:
+  mongo-service:
     image: mongo
     ports:
       - '27017:27017'

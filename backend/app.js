@@ -10,14 +10,16 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
 	cors: {
-		origin: '*', // Allow all origins (change to frontend URL in production)
+		origin: ['http://task.paresh.work'],
+		methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+		credentials: true,
 	},
 });
 
 app.use(cors());
 app.use(express.json());
 
-const mongoURL = process.env.MONGO_URL || 'mongodb://localhost:27017/devops_demo';
+const mongoURL = process.env.MONGO_URL || 'mongodb://mongo:27017/devops_demo';
 
 mongoose.connect(mongoURL, {
 	useNewUrlParser: true,
@@ -81,5 +83,5 @@ app.delete('/tasks/:id', async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-	console.log(`🚀 Server with Socket.IO running at http://localhost:${PORT}`);
+	console.log(`🚀 Backend API listening on http://0.0.0.0:${PORT}`);
 });
