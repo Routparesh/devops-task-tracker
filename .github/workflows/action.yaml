@@ -45,7 +45,7 @@ jobs:
           sed -i "s|routparesh/task-tracker-backend-app:.*|routparesh/task-tracker-backend-app:${{ env.IMAGE_TAG }}|g" k8s/manifests/backend/deployment.yaml
           sed -i "s|routparesh/task-tracker-frontend-app:.*|routparesh/task-tracker-frontend-app:${{ env.IMAGE_TAG }}|g" k8s/manifests/frontend/deployment.yaml
 
-      # ✅ Commit and push updated YAML
+      # ✅ Commit and push updated YAMLs
       - name: Commit updated image tags
         run: |
           git config user.name "github-actions"
