@@ -76,7 +76,7 @@ const TaskList = () => {
 					style={{ padding: '8px', marginRight: '10px', width: '250px' }}
 				/>
 				<button onClick={handleAddTask} style={{ padding: '8px 16px' }}>
-					➕ Add Task
+					➕ Add Task node
 				</button>
 			</div>
 
