@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: task-tracker-app-backend
-          image: routparesh/task-tracker-backend-app:c0256bbf9e671fd86d79528f93af70d83762d7c5
+          image: routparesh/task-tracker-backend-app:1206f146bb00045956c9043f4b791c003a5bf0ab
           ports:
             - containerPort: 3000
