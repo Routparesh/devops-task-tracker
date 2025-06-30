@@ -21,9 +21,17 @@ spec:
                 name: backend-service
                 port:
                   number: 3000
+
     - host: task.paresh.work
       http:
         paths:
+          - path: /socket.io/
+            pathType: Prefix
+            backend:
+              service:
+                name: backend-service
+                port:
+                  number: 3000
           - path: /
             pathType: Prefix
             backend:
