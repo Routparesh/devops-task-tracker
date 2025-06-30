@@ -10,13 +10,19 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
 	cors: {
-		origin: ['http://task.paresh.work'],
+		origin: ['http://localhost', 'http://task.paresh.work'],
 		methods: ['GET', 'POST', 'PATCH', 'DELETE'],
 		credentials: true,
 	},
 });
 
-app.use(cors());
+app.use(
+	cors({
+		origin: ['http://localhost', 'http://task.paresh.work'],
+		credentials: true,
+	})
+);
+
 app.use(express.json());
 
 const mongoURL = process.env.MONGO_URL || 'mongodb://mongo:27017/devops_demo';
